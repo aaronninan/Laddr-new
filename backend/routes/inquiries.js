@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
       }
     });
 
-    const property = await Property.findById(req.body.propertyId);
+    const property = await Property.findOne({ id: req.body.propertyId });
     if (!property) {
       console.error('Property not found for inquiry');
       return res.status(400).json({ message: 'Property not found' });
@@ -73,7 +73,11 @@ router.get('/', authenticateToken, async (req, res) => {
   }
   
   try {
-    const inquiries = await Inquiry.find().populate('propertyId').populate('userId');
+    const inquiries = await Inquiry.find().populate({
+      path: 'propertyId',
+      model: Property,
+      match: { id: '$propertyId' }
+    }).populate('userId');
     res.json(inquiries);
   } catch (error) {
     res.status(500).json({ message: error.message });
