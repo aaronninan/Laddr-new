@@ -211,14 +211,14 @@ const AnalyticsPage = () => {
     ]
   });
 
-  const [riskFactors, setRiskFactors] = useState([
+  const [riskFactors] = useState([
     { name: 'Flood Risk', level: 'Low' },
     { name: 'Crime/Safety', level: 'Medium' },
     { name: 'Market Volatility', level: 'High' },
     { name: 'Economic Stability', level: 'Stable' }
   ]);
 
-  const [recommendations, setRecommendations] = useState([
+  const [recommendations] = useState([
     {
       id: 1,
       title: 'Oceanview Villa',

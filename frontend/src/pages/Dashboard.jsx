@@ -52,7 +52,7 @@ const Dashboard = () => {
       }
     };
     loadCities();
-  }, []);
+  }, [selectedCity]);
 
   // Fetch analytics when selectedCity or timeframe changes
   useEffect(() => {
