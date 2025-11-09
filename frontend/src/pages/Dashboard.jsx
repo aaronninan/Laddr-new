@@ -286,7 +286,7 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-lg shadow-sm border">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-gray-900">Recent Activity</h3>
-            <a href="#" className="text-sm text-blue-600">View all</a>
+            <button className="text-sm text-blue-600 hover:underline">View all</button>
           </div>
           <p className="text-sm text-gray-600">Your most recent interactions will appear here.</p>
         </div>

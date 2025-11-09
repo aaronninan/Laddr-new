@@ -55,8 +55,8 @@ const AnalyticsPage = () => {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/cities`);
         const cities = res.data || [];
         setAvailableCities(cities);
-        if (cities.length > 0 && !selectedCity) {
-          setSelectedCity(cities[0]);
+        if (cities.length > 0) {
+          setSelectedCity(prev => prev || cities[0]);
         }
       } catch (e) {
         console.error('Error loading cities', e);
