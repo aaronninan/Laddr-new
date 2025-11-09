@@ -11,10 +11,6 @@ const PropertyDetails = () => {
   const [inquiryLoading, setInquiryLoading] = useState(false);
   const [inquiryError, setInquiryError] = useState(null);
 
-  useEffect(() => {
-    fetchProperty();
-  }, [id, fetchProperty]);
-
   const fetchProperty = useCallback(async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties/${id}`);
@@ -25,6 +21,10 @@ const PropertyDetails = () => {
       setPropertyError('Failed to load property details. Please try again later.');
     }
   }, [id]);
+
+  useEffect(() => {
+    fetchProperty();
+  }, [id, fetchProperty]);
 
   const handleInquirySubmit = async (e) => {
     e.preventDefault();
