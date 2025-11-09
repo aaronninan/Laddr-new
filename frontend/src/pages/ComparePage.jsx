@@ -48,7 +48,7 @@ const ComparePage = () => {
 
     setIsSearching(true);
     try {
-      const response = await axios.get('/api/properties', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties`, {
         params: { search: query }
       });
       setSearchResults(response.data.slice(0, 10)); // Limit to 10 results
@@ -278,7 +278,7 @@ const ComparePage = () => {
           return;
         }
 
-        const response = await axios.get('/api/analytics/property-analysis', {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/property-analysis`, {
           params: { propertyIds: propertyIds.join(',') }
         });
         

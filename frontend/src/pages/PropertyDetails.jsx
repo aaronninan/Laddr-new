@@ -17,7 +17,7 @@ const PropertyDetails = () => {
 
   const fetchProperty = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/properties/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties/${id}`);
       setProperty(response.data);
       setPropertyError(null);
     } catch (err) {
@@ -31,7 +31,7 @@ const PropertyDetails = () => {
     setInquiryLoading(true);
     setInquiryError(null);
     try {
-      await axios.post('http://localhost:5000/api/inquiries', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/inquiries`, {
         propertyId: id,
         ...inquiryForm
       });

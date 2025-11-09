@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   const fetchProperties = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/properties', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProperties(response.data);
@@ -27,7 +27,7 @@ const AdminDashboard = () => {
   const fetchInquiries = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/inquiries', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/inquiries`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setInquiries(response.data);
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/properties/upload-csv', formData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/properties/upload-csv`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/properties/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/properties/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchProperties();

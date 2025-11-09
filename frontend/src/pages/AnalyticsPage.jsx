@@ -52,7 +52,7 @@ const AnalyticsPage = () => {
   useEffect(() => {
     const loadCities = async () => {
       try {
-        const res = await axios.get('/api/analytics/cities');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/cities`);
         const cities = res.data || [];
         setAvailableCities(cities);
         if (cities.length > 0 && !selectedCity) {
@@ -70,7 +70,7 @@ const AnalyticsPage = () => {
     const fetchHistoricalPriceTrends = async () => {
       if (!selectedCity) return;
       try {
-        const response = await axios.get('/api/analytics/historical-price-trends', {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/historical-price-trends`, {
           params: { years: timeframe.split(' ')[0], city: selectedCity }
         });
         const data = response.data;
@@ -164,11 +164,11 @@ const AnalyticsPage = () => {
       if (!selectedCity) return;
       try {
         const [summaryRes, roiRes, yieldRes, amenitiesRes, possessionRes] = await Promise.all([
-          axios.get('/api/analytics/summary', { params: { city: selectedCity } }),
-          axios.get('/api/analytics/roi-forecast', { params: { city: selectedCity } }),
-          axios.get('/api/analytics/rental-yield', { params: { city: selectedCity } }),
-          axios.get('/api/analytics/amenities-analysis', { params: { city: selectedCity } }),
-          axios.get('/api/analytics/possession-status', { params: { city: selectedCity } })
+          axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/summary`, { params: { city: selectedCity } }),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/roi-forecast`, { params: { city: selectedCity } }),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/rental-yield`, { params: { city: selectedCity } }),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/amenities-analysis`, { params: { city: selectedCity } }),
+          axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/possession-status`, { params: { city: selectedCity } })
         ]);
 
         setSummary({
