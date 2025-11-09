@@ -12,33 +12,6 @@ const ComparePage = () => {
   const debounceTimerRef = useRef(null);
   const [showSearchModal, setShowSearchModal] = useState(false);
 
-  const getRiskColor = (level) => {
-    switch (level) {
-      case 'Low': return 'bg-green-100 text-green-800';
-      case 'Medium': return 'bg-yellow-100 text-yellow-800';
-      case 'Medium-High': return 'bg-orange-100 text-orange-800';
-      case 'High': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const getHighlightColor = (color) => {
-    switch (color) {
-      case 'purple': return 'bg-purple-100 text-purple-800';
-      case 'blue': return 'bg-blue-100 text-blue-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const getTypeColor = (type) => {
-    switch (type) {
-      case 'Villa': return 'bg-blue-100 text-blue-800';
-      case 'Apartment': return 'bg-purple-100 text-purple-800';
-      case 'Commercial': return 'bg-green-100 text-green-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
   // Search properties function
   const searchProperties = async (query) => {
     if (!query.trim()) {
@@ -176,7 +149,6 @@ const ComparePage = () => {
     ];
 
     // Calculate column widths
-    const numColumns = properties.length + 1; // +1 for the attribute column
     const firstColumnWidth = 60; // Width for attribute names
     const remainingWidth = pageWidth - margin * 2 - firstColumnWidth;
     const otherColumnWidth = remainingWidth / properties.length;

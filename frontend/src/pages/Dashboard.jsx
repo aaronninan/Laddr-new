@@ -20,7 +20,6 @@ const Dashboard = () => {
   // Basic user & portfolio state
   const [user, setUser] = useState({ name: 'User' });
   const [metrics, setMetrics] = useState({ propertiesSaved: 0, averageROI: 0, rentalYield: 0, riskIndex: '—' });
-  const [portfolio, setPortfolio] = useState({ name: '—', purchaseDate: '', purchasePrice: 0, currentValue: 0, ytdGrowth: 0, target: 1 });
 
   // Analytics state (pulled from the analytics endpoints)
   const [availableCities, setAvailableCities] = useState([]);
