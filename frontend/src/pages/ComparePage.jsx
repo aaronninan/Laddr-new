@@ -293,7 +293,7 @@ const ComparePage = () => {
     };
 
     fetchHighlights();
-  }, [properties, selectedCity]);
+  }, [properties]);
 
   return (
     <div className="min-h-screen bg-gray-50">
