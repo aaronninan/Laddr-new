@@ -253,7 +253,7 @@ const ComparePage = () => {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/analytics/property-analysis`, {
           params: { propertyIds: propertyIds.join(',') }
         });
-        
+
         setHighlights(response.data);
       } catch (error) {
         console.error('Error fetching highlights:', error);
@@ -293,7 +293,7 @@ const ComparePage = () => {
     };
 
     fetchHighlights();
-  }, [properties]);
+  }, [properties, selectedCity]);
 
   return (
     <div className="min-h-screen bg-gray-50">

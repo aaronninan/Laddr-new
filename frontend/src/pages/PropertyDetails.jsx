@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,9 +13,9 @@ const PropertyDetails = () => {
 
   useEffect(() => {
     fetchProperty();
-  }, [id]);
+  }, [id, fetchProperty]);
 
-  const fetchProperty = async () => {
+  const fetchProperty = useCallback(async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/properties/${id}`);
       setProperty(response.data);
@@ -24,7 +24,7 @@ const PropertyDetails = () => {
       console.error('Error fetching property:', err);
       setPropertyError('Failed to load property details. Please try again later.');
     }
-  };
+  }, [id]);
 
   const handleInquirySubmit = async (e) => {
     e.preventDefault();
